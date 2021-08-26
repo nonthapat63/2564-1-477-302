@@ -5,26 +5,26 @@
     <style>
         h3{
             font-family: Calibri; 
-            font-size: 25pt;         
+            font-size: 22pt;         
             font-style: normal; 
             font-weight: bold; 
-            color:SlateBlue;
+            color:red;
             text-align: center; 
             text-decoration: underline
         }
         table{
             font-family: Calibri; 
-            color:white; 
-            font-size: 11pt; 
+            color:black; 
+            font-size: 10pt; 
             font-style: normal;
             font-weight: bold;
             text-align:center;
-            background-color: SlateBlue; 
+            background-color: yellowgreen; 
             border-collapse: collapse; 
-            border: 2px solid navy
+            border: 2px solid green
         }
         table.inner{
-            border: 0px
+            border:0px
         }
     </style>
 
@@ -54,14 +54,12 @@
             <!----- Date Of Birth -------------------------------------------------------->
             <tr>
                 <td>DATE OF BIRTH</td>
-
                 <td>
                     <select name="Birthday_day" id="Birthday">
                         <option value="-1">Day:</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
-
                         <option value="4">4</option>
                         <option value="5">5</option>
                         <option value="6">6</option>
@@ -71,7 +69,6 @@
                         <option value="10">10</option>
                         <option value="11">11</option>
                         <option value="12">12</option>
-
                         <option value="13">13</option>
                         <option value="14">14</option>
                         <option value="15">15</option>
@@ -81,7 +78,6 @@
                         <option value="19">19</option>
                         <option value="20">20</option>
                         <option value="21">21</option>
-
                         <option value="22">22</option>
                         <option value="23">23</option>
                         <option value="24">24</option>
@@ -91,7 +87,6 @@
                         <option value="28">28</option>
                         <option value="29">29</option>
                         <option value="30">30</option>
-
                         <option value="31">31</option>
                     </select>
 
@@ -112,7 +107,6 @@
                     </select>
 
                     <select name="Birthday_Year" id="Birthday">
-
                         <option value="-1">Year:</option>
                         <option value="2012">2012</option>
                         <option value="2011">2011</option>
@@ -127,7 +121,6 @@
                         <option value="2002">2002</option>
                         <option value="2001">2001</option>
                         <option value="2000">2000</option>
-
                         <option value="1999">1999</option>
                         <option value="1998">1998</option>
                         <option value="1997">1997</option>
@@ -138,7 +131,6 @@
                         <option value="1992">1992</option>
                         <option value="1991">1991</option>
                         <option value="1990">1990</option>
-
                         <option value="1989">1989</option>
                         <option value="1988">1988</option>
                         <option value="1987">1987</option>
@@ -194,8 +186,8 @@
             <!----- Pin Code ---------------------------------------------------------->
             <tr>
                 <td>PIN CODE</td>
-                <td><input type="text" id="Pin_Code" name="Pin_Code" maxlength="6" />
-                    (6 digit number)
+                <td><input type="text" id="Pin_Code" name="Pin_Code" maxlength="5" />
+                    (5 digit number)
                 </td>
             </tr>
 
@@ -211,27 +203,6 @@
             <tr>
                 <td>COUNTRY</td>
                 <td><input type="text" id="Country" name="Country" value="Thailand" readonly="readonly" /></td>
-            </tr>
-
-            <!----- Hobbies ---------------------------------------------------------->
-
-            <tr>
-                <td>HOBBIES <br /><br /><br /></td>
-
-                <td>
-                    Drawing
-                    <input type="checkbox" name="Hobby_Drawing" id="Hobby" value="Drawing" />
-                    Singing
-                    <input type="checkbox" name="Hobby_Singing" id="Hobby" value="Singing" />
-                    Dancing
-                    <input type="checkbox" name="Hobby_Dancing" id="Hobby" value="Dancing" />
-                    Sketching
-                    <input type="checkbox" name="Hobby_Cooking" id="Hobby" value="Cooking" />
-                    <br />
-                    Others
-                    <input type="checkbox" name="Hobby_Other" id="Hobby" value="Other">
-                    <input type="text" name="Other_Hobby" id="Hobby" maxlength="30" />
-                </td>
             </tr>
 
             <!----- Submit and Reset ------------------------------------------------->
@@ -339,19 +310,6 @@
             if (country.value == "") {
                 alert("Please Enter Country");
                 country.focus();
-            }
-
-            //Hobbies---->
-            var hobby = document.getElementById("Hobby");
-            var ischecked_method = false;
-            for ( var i = 0; i < hobby.length; i++) {
-                if(hobby[i].checked) {
-                    ischecked_method = true;
-                    break;
-                }
-            }
-            if(!ischecked_method) {
-                alert("Please Selection Hobby");
             }
 
         }
