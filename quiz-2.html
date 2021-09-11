@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quiz-2</title>
+    <link rel="stylesheet" href="CSS-quiz2.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=K2D:wght@100&display=swap" rel="stylesheet">
+</head>
+<body onload="chkUsername()"">
+    <div class="ct" id="contact">
+    <center>   
+        <h3>ติดต่อที่นี่</h3>
+        <p>โปรดกรอกรายละเอียด เราจะติดต่อไปภายหลัง</p>
+        <form>
+            ชื่อ <input type="text" placeholder="โปรดกรอกชื่อ" required name="ชื่อ">
+            <br>
+            นามสกุล <input type="text" placeholder="โปรดกรอกนามสกุล" required name="นามสกุล">
+            <br>
+            เบอร์โทรศัพท์ <input type="text" placeholder="โปรดกรอกเบอร์โทรศัพท์" required name="เบอร์โทรศัพท์">
+            <br>
+            อีเมล <input type="text" placeholder="โปรดกรอกอีเมล" required name="อีเมล">
+            <br>
+            <br> 
+            
+            <p id="demo">กดปุ่มนี้เพื่อทราบตำแหน่งของคุณ</p>
+            <button onclick="getLocation()">กดที่นี่ !!!</button>
+            <div id="mapholder"></div>
+
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoKoNVKdXRrp8YDgara5W1m2nfTU1dG5g&callback=initMap"
+            type="text/javascript"></script>
+            <script>
+            var x = document.getElementById("demo");
+            function getLocation() {
+            if (navigator.geolocation) {
+            /* glat = prompt("Enter your latitude", 0);
+            glon = prompt("Enter your longitude", 0);
+            showPosition(glat, glon); */
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+                }
+            }
+
+            function showPosition(position) {
+            lat = position.coords.latitude;
+            lon = position.coords.longitude;
+            //glat = [6.998068, 6.998838] ;
+            //glon = [100.482465, 100.480831];
+            latlon = new google.maps.LatLng(lat, lon)
+            mapholder = document.getElementById('mapholder')
+            mapholder.style.height = '350px';
+            mapholder.style.width = '500px';
+
+            var myOptions = {
+            center: latlon,
+            zoom:16,
+            mapTypeId:google.maps.MapTypeId.ROADMAP,
+            mapTypeControl:false,
+            navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
+            }
+
+            var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
+            var marker = new google.maps.Marker({position:latlon, map:map, title:"You are here!"});
+            }
+
+            function showError(error) {
+            switch(error.code) {
+            case error.PERMISSION_DENIED:
+               x.innerHTML = "ปฏิเสธการเข้าถึงตำแหน่งที่ตั้ง"
+               break;
+            case error.POSITION_UNAVAILABLE:
+               x.innerHTML = "Location information is unavailable."
+               break;
+            case error.TIMEOUT:
+               x.innerHTML = "The request to get user location timed out."
+               break;
+            case error.UNKNOWN_ERROR:
+               x.innerHTML = "An unknown error occurred."
+               break;
+            }
+            }
+            </script>
+            <br>
+            <input type="submit" value="ลงทะเบียน">
+            <br>
+            <br>
+            บันทึกข้อมูลเพิ่มเติม <div id="div1"></div>
+            <button onclick="saveUsername()" type="button">บันทึก</button>
+            <button onclick="delUsername()" type="button">ลบ</button>
+            <div id="result"></div>
+        <script>
+        function chkUsername() {
+            if(typeof(Storage) !== "undefined") {
+                if (localStorage.username) {
+                    document.getElementById("div1").innerHTML = localStorage.username;
+                } else {
+                    document.getElementById("div1").innerHTML = "<input type='text' placeholder=' บันทึกข้อมูลเพิ่มเติม ' id='username'>";
+                }
+            } else {
+                document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+            }
+        }
+        function saveUsername() {
+            uname = document.getElementById("username");
+            localStorage.username = uname.value;
+            chkUsername();
+        }
+        function delUsername() {
+            localStorage.removeItem("username");
+            chkUsername();
+        }
+        </script>
+        <br>
+        <br>
+        <div>  
+            <dialog id="Dialog1" style="width:25%;height:25%;background-color:#99FFFF;border:2px">  
+            <p><q>ทางเราจะดำเนินการติดต่อกลับภายใน 7 วันทำการ</q>
+            <br>- แผนกประชาสัมพันธ์</p>  
+            <button id="hide">ปิด</button>  
+            </dialog>  
+            <button id="show">อ่านรายละเอียดเพิ่มเติม</button>  
+            </div>  
+              
+            <script type="text/JavaScript">  
+            (function() {    
+                var dialog = document.getElementById('Dialog1');    
+                document.getElementById('show').onclick = function() {    
+                    dialog.show();    
+                };    
+                document.getElementById('hide').onclick = function() {    
+                    dialog.close();    
+                };    
+            })();   
+            </script>  
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </form>        
+    </center>
+    </>
+</body>
+</html>

@@ -1,0 +1,28 @@
+*{
+    font-family: 'K2D', sans-serif;
+}
+
+body {
+    background-image: url("https://somnomed.com/wp-content/uploads/2016/12/website-background-1.jpg");
+}
+
+div.ct {
+    background-color: rgb(202, 208, 223) ;
+    width: 500px;
+    padding: 20px;
+    border-radius: 30px ;
+    border: 5px solid #33FFFF;
+
+
+    margin: auto ;
+}
+
+body{
+    font-size: 24px; margin: 0px;
+}
+
+
+footer p {
+    text-align: center; font-size: 12px;
+    color: rgb(95, 230, 41); margin-top: 24px;
+}
