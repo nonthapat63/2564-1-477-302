@@ -1,1 +1,0 @@
-<div class="row"><div class="ws-footer">Copy Right 2021 Webboard By Pet Community</
